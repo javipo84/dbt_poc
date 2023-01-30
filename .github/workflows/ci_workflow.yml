@@ -9,19 +9,12 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-env:
-  DBT_PROFILES_DIR: ./
-  SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}
-  DABATASE_SYNAPSE: ${{ secrets.DABATASE_SYNAPSE }}
-  SCHEMA_SYNAPSE: ${{ secrets.SCHEMA_SYNAPSE }}
-  AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
-  USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
-  PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
 
 jobs:
   schedule_dbt_job:
     name: schedule_dbt_job
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
     - uses: actions/checkout@master
@@ -38,6 +31,12 @@ jobs:
       run: dbt debug
       env:
         DBT_PROFILES_DIR: ./
+        SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}
+        DABATASE_SYNAPSE: ${{ secrets.DABATASE_SYNAPSE }}
+        SCHEMA_SYNAPSE: ${{ secrets.SCHEMA_SYNAPSE }}
+        AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
+        USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
+        PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
 
     #- name: Test dbt models
     #  run: dbt run

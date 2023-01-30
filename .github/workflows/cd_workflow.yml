@@ -1,0 +1,48 @@
+name: cd_workflow
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  dbt_cd_jobs:
+    name: dbt_cd_jobs
+    runs-on: ubuntu-latest
+    environment: pro
+
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-python@v1
+      with:
+        python-version: "3.10.9"       
+    
+    - name: Install dependencies
+      run: |
+        pip install dbt-core==1.3.2
+        pip install dbt-synapse==1.3.0
+        dbt deps
+        pip install sqlfluff==1.4.5
+        pip install sqlfluff-templater-dbt==1.4.5
+
+    # dbt related commands here - run use --target prod/dev to run for specific environments
+    - name: Run dbt debug
+      run: dbt debug --target pro
+      env:
+        DBT_PROFILES_DIR: ./
+        SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}
+        DABATASE_SYNAPSE: ${{ secrets.DABATASE_SYNAPSE }}
+        SCHEMA_SYNAPSE: ${{ secrets.SCHEMA_SYNAPSE }}
+        AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
+        USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
+        PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
+
+    - name: dbt build
+      run: dbt build --target pro
+      env:
+        DBT_PROFILES_DIR: ./
+        SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}
+        DABATASE_SYNAPSE: ${{ secrets.DABATASE_SYNAPSE }}
+        SCHEMA_SYNAPSE: ${{ secrets.SCHEMA_SYNAPSE }}
+        AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
+        USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
+        PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 

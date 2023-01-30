@@ -1,0 +1,12 @@
+[sqlfluff]
+templater = dbt
+dialect = tsql
+
+[sqlfluff:rules:L014]
+unquoted_identifiers_policy = column_aliases
+
+[sqlfluff:rules:L016]
+max_line_length = 300
+
+[sqlfluff:rules:L030]
+capitalisation_policy = lower

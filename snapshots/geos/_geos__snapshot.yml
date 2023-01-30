@@ -1,0 +1,22 @@
+version: 2
+
+snapshots:
+  - name: snapshot_geos__tipo_departamento_tareas
+    config:      
+      tags:
+        - "hourly"      
+
+  - name: snapshot_geos__proyecto_cbs
+    config:      
+      tags:
+        - "hourly"
+
+  - name: snapshot_geos__tipos_hora
+    config:      
+      tags:
+        - "hourly"
+
+  - name: snapshot_geos__proyecto
+    config:      
+      tags:
+        - "hourly"                

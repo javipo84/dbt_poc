@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: fct_geos__imputaciones
+    config:      
+      tags:
+        - "daily"
+
+  - name: dim_geos__tipo_departamento_tareas
+    config:      
+      tags:
+        - "hourly"    
+
+  - name: dim_geos__proyecto_cbs
+    config:      
+      tags:
+        - "hourly"
+
+  - name: dim_geos__tipos_hora
+    config:      
+      tags:
+        - "hourly"
+
+  - name: dim_geos__proyecto
+    config:      
+      tags:
+        - "hourly"        

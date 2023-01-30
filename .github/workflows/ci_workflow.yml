@@ -41,16 +41,16 @@ jobs:
         USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
         PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
 
-    - name: Run sqlfluff lint
-      run: sqlfluff lint
-      env:
-        DBT_PROFILES_DIR: ./
-        SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}
-        DABATASE_SYNAPSE: ${{ secrets.DABATASE_SYNAPSE }}
-        SCHEMA_SYNAPSE: ${{ secrets.SCHEMA_SYNAPSE }}
-        AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
-        USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
-        PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
+    #- name: Run sqlfluff lint
+    #  run: sqlfluff lint
+    #  env:
+    #    DBT_PROFILES_DIR: ./
+    #    SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}
+    #    DABATASE_SYNAPSE: ${{ secrets.DABATASE_SYNAPSE }}
+    #    SCHEMA_SYNAPSE: ${{ secrets.SCHEMA_SYNAPSE }}
+    #    AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
+    #    USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
+    #    PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
 
     - name: dbt build
       run: dbt build

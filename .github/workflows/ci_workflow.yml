@@ -11,8 +11,8 @@ on:
     branches: [ master ]
 
 jobs:
-  schedule_dbt_job:
-    name: schedule_dbt_job
+  dbt_ci_jobs:
+    name: dbt_ci_jobs
     runs-on: ubuntu-latest
     environment: dev
 

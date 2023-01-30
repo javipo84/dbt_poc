@@ -1,0 +1,45 @@
+name: ci_workflow
+
+on:
+  #schedule:
+      # run at 7AM every single day
+      # https://crontab.guru <-- for generating CRON expression
+      #- cron: '*/5 * * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+env:
+  DBT_PROFILES_DIR: ./
+  SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}
+  DABATASE_SYNAPSE: ${{ secrets.DABATASE_SYNAPSE }}
+  SCHEMA_SYNAPSE: ${{ secrets.SCHEMA_SYNAPSE }}
+  AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
+  USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
+  PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
+
+jobs:
+  schedule_dbt_job:
+    name: schedule_dbt_job
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-python@v1
+      with:
+        python-version: "3.10.9"       
+    
+    - name: Install dependencies
+      run: |
+        pip install dbt-synapse
+        dbt deps
+    # dbt related commands here - run use --target prod/dev to run for specific environments
+    - name: Run dbt debug
+      run: dbt debug
+      env:
+        DBT_PROFILES_DIR: ./
+
+    #- name: Test dbt models
+    #  run: dbt run
+    #  env:
+    #    DBT_PROFILES_DIR: ./

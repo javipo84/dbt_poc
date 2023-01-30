@@ -24,10 +24,11 @@ jobs:
     
     - name: Install dependencies
       run: |
-        pip install dbt-synapse
+        pip install dbt-core==1.3.2
+        pip install dbt-synapse==1.3.0
         dbt deps
-        pip install sqlfluff
-        pip install sqlfluff-templater-dbt
+        pip install sqlfluff==1.4.5
+        pip install sqlfluff-templater-dbt==1.4.5
 
     # dbt related commands here - run use --target prod/dev to run for specific environments
     - name: Run dbt debug
@@ -41,16 +42,16 @@ jobs:
         USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
         PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
 
-    #- name: Run sqlfluff lint
-    #  run: sqlfluff lint
-    #  env:
-    #    DBT_PROFILES_DIR: ./
-    #    SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}
-    #    DABATASE_SYNAPSE: ${{ secrets.DABATASE_SYNAPSE }}
-    #    SCHEMA_SYNAPSE: ${{ secrets.SCHEMA_SYNAPSE }}
-    #    AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
-    #    USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
-    #    PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
+    - name: Run sqlfluff lint
+      run: sqlfluff lint
+      env:
+        DBT_PROFILES_DIR: ./
+        SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}
+        DABATASE_SYNAPSE: ${{ secrets.DABATASE_SYNAPSE }}
+        SCHEMA_SYNAPSE: ${{ secrets.SCHEMA_SYNAPSE }}
+        AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
+        USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
+        PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
 
     - name: dbt build
       run: dbt build

@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_geos__imputaciones
+    config:      
+      tags:
+        - "daily"
+
+  - name: stg_geos__tipo_departamento_tareas
+    config:      
+      tags:
+        - "hourly"
+    columns:
+      - name: nk_tipo_departamento_tareas
+        tests:
+          - unique
+          - not_null        
+        
+
+  - name: stg_geos__proyecto_cbs
+    config:      
+      tags:
+        - "hourly"
+
+  - name: stg_geos__tipos_hora
+    config:      
+      tags:
+        - "hourly"
+
+  - name: stg_geos__proyecto
+    config:      
+      tags:
+        - "hourly"        

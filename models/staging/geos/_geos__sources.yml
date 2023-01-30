@@ -1,0 +1,162 @@
+version: 2
+
+sources:
+
+  - name: geos # name of the source 
+    schema: raw # this is the schema our raw data lives in
+    database: DWH100c # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+      - name: GEOS_TipoDepartamentoTareas        
+        tags: ["hourly"]
+        description: >
+          Datos sobre las tareas por departamento
+        columns:
+          - name: Codigo
+            description: >
+              Natural Key
+            tests:
+              - not_null
+              - unique
+          - name: CodTipoDepartamento
+            description: >
+              UUID tipo departamento
+            tests:
+              - not_null
+          - name: Activo
+            description: >
+              Indica el estado del registro
+            tests:
+              - not_null   
+
+      - name: GEOS_ProyectoCBS   
+        tags: ["hourly"]              
+        columns:
+          - name: Id
+          - name: IdProyecto
+          - name: IdTipoDepartamentoEtiqueta
+          - name: CodTipoCoste
+          - name: CodigoPadre
+          - name: Sufijo
+          - name: EsAgregador
+          - name: CodTipoCbs
+          - name: CreatedBy
+          - name: CreatedAt
+          - name: ChangedBy
+          - name: ChangedAt
+
+      - name: GEOS_TiposHora       
+        tags: ["hourly"]          
+        columns:
+          - name: Id
+          - name: IdUnidadMedida
+          - name: Codigo
+          - name: CodPais
+          - name: CodigoCentral
+          - name: TipoConcepto
+          - name: Coste
+          - name: ReportarRRHH
+          - name: Horario
+          - name: TipoProyecto
+          - name: CodTipoDepartamento
+          - name: GeneraDescanso          
+          - name: ConsumeDescanso
+          - name: Ausencia
+          - name: Abono
+          - name: Frecuencia
+          - name: Estado
+          - name: ContabilizaHoras
+          - name: CreatedBy
+          - name: CreatedAt
+          - name: ChangedBy
+          - name: ChangedAt
+
+      - name: GEOS_Proyectos      
+        tags: ["hourly"]            
+        columns:
+          - name: Id
+          - name: IdEstadoProyecto
+          - name: IdAgrupacionEstados
+          - name: CodTipoProyecto
+          - name: IdUnidadMedidaDefecto
+          - name: Codigo
+          - name: CodPais
+          - name: CodMoneda
+          - name: Descripcion
+          - name: CodTipoEstructuraSocietaria
+          - name: CodModoTrabajoPresupuesto
+          - name: CodTipoDepartamento          
+          - name: TransferenciaCoste
+          - name: GestorProyecto
+          - name: LimiteTramo
+          - name: DiaInicio
+          - name: DiaFin
+          - name: Activo
+          - name: SistemaRrhhExterno
+          - name: ImportacionNominaExterna
+          - name: TieneRegistroProduccion
+          - name: DesviacionesHorario
+          - name: CodContabilidad
+          - name: CodLimiteConsumo
+          - name: Tolerancia
+          - name: Tasas
+          - name: ProvisionFinObra
+          - name: FechaBaja
+          - name: NoCertificacionAdicionalPdt
+          - name: EnviarProvision
+          - name: Comprometido
+          - name: EsDepartamento
+          - name: PrecierreCentralizado
+          - name: Ofertas
+          - name: NoSeleccionablePermisos
+          - name: CodSubtipoObra
+          - name: ResponsablePais
+          - name: Delegado
+          - name: Delegacion
+          - name: JefeAdministracion
+          - name: CreatedBy
+          - name: CreatedAt
+          - name: ChangedBy
+          - name: ChangedAt
+
+      - name: GEOS_Imputaciones        
+        tags: ["daily"]      
+        description: >
+          Datos sobre las imputaciones
+        columns:
+          - name: Id
+            description: >
+              Natural Key
+            tests:
+              - not_null
+              - unique
+          - name: IdAsignacion
+            description: >
+              UUID tipo asignacion
+            tests:
+              - not_null
+          - name: IdTipoHora
+            description: >
+              Indica el estado del registro
+            tests:
+              - not_null       
+          - name: IdProyecto        
+          - name: IdProyectoCbs
+          - name: CodTipoDepartamentoTarea
+          - name: FechaSemana
+          - name: Comentarios
+          - name: ComentariosAprobador
+          - name: CreatedBy
+          - name: CreatedAt
+          - name: ChangedBy		                    
+		      
+	             

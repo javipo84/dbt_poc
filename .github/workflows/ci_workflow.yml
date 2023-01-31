@@ -39,6 +39,8 @@ jobs:
         AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
         USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
         PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
+        SCHEMA_SILVER: ${{ secrets.SCHEMA_SILVER }} 
+        SCHEMA_GOLD: ${{ secrets.SCHEMA_GOLD }} 
 
     - name: Run sqlfluff lint
       run: sqlfluff lint
@@ -50,6 +52,8 @@ jobs:
         AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
         USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
         PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
+        SCHEMA_SILVER: ${{ secrets.SCHEMA_SILVER }} 
+        SCHEMA_GOLD: ${{ secrets.SCHEMA_GOLD }}         
 
     - name: dbt build
       run: dbt build
@@ -61,3 +65,5 @@ jobs:
         AUTHENTICATION_SYNAPSE: ${{ secrets.AUTHENTICATION_SYNAPSE }}
         USER_SYNAPSE: ${{ secrets.USER_SYNAPSE }}
         PASSWORD_SYNAPSE: ${{ secrets.PASSWORD_SYNAPSE }} 
+        SCHEMA_SILVER: ${{ secrets.SCHEMA_SILVER }} 
+        SCHEMA_GOLD: ${{ secrets.SCHEMA_GOLD }}         

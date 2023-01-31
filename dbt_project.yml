@@ -43,3 +43,12 @@ models:
 snapshots:  
   dbt_poc:  
     +target_schema: "{{ env_var('SCHEMA_SILVER') }}"    
+
+sources:
+  dbt_poc:
+    index: HEAP
+
+tests:
+  dbt_poc:
+    index: HEAP
+

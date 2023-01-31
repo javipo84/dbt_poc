@@ -1,6 +1,7 @@
 [sqlfluff]
 templater = dbt
 dialect = tsql
+exclude_rules = L034
 
 [sqlfluff:rules:L014]
 unquoted_identifiers_policy = column_aliases

@@ -16,13 +16,13 @@
     FROM {{ ref('snapshot_geos__tipo_departamento_tareas') }}
   ),
 
-  rename_stg_tipo_departamento_tareas AS (
+  rename_casted_stg_tipo_departamento_tareas AS (
     SELECT
         dbt_scd_id AS sk_tipo_departamento_tareas,
-        Codigo AS nk_tipo_departamento_tareas,
-        Codigo AS codigo,
-        CodTipoDepartamento AS codigo_tipo_departamento,
-        Activo AS activo,
+        CAST(Codigo AS INT) AS nk_tipo_departamento_tareas,
+        CAST(Codigo AS INT) AS codigo,
+        CAST(CodTipoDepartamento AS INT) AS codigo_tipo_departamento,
+        CAST(Activo AS BIT) AS activo,
         dbt_valid_from AS fecha_insercion,
         dbt_updated_at AS fecha_modificacion,
         null AS fecha_eliminacion,
@@ -32,4 +32,4 @@
     FROM snapshot_tipo_departamento_tareas
   )
 
-  SELECT * FROM rename_stg_tipo_departamento_tareas
+  SELECT * FROM rename_casted_stg_tipo_departamento_tareas

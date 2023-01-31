@@ -11,6 +11,7 @@ dbt_poc:
       authentication: "{{ env_var('AUTHENTICATION_SYNAPSE') }}"
       user: "{{ env_var('USER_SYNAPSE') }}"
       password: "{{ env_var('PASSWORD_SYNAPSE') }}"
+      threads: 4
 
     pro:
       type: synapse
@@ -22,3 +23,4 @@ dbt_poc:
       authentication: "{{ env_var('AUTHENTICATION_SYNAPSE') }}"
       user: "{{ env_var('USER_SYNAPSE') }}"
       password: "{{ env_var('PASSWORD_SYNAPSE') }}"      
+      threads: 4

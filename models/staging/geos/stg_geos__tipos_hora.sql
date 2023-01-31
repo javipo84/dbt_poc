@@ -31,27 +31,27 @@
     FROM {{ ref('snapshot_geos__tipos_hora') }}
   ),
 
-  rename_stg_tipos_hora AS (
+  rename_casted_stg_tipos_hora AS (
     SELECT
         dbt_scd_id AS sk_tipos_hora,
-        Id AS nk_tipos_hora,
-        IdUnidadMedida AS id_unidad_medida,
+        CAST(Id AS INT) AS nk_tipos_hora,
+        CAST(IdUnidadMedida AS INT) AS id_unidad_medida,
         Codigo AS codigo,
         CodPais AS codigo_pais,
         CodigoCentral AS codigo_central,
-        TipoConcepto AS tipo_concepto,
-        Coste AS coste,
-        ReportarRRHH AS reportar_rrhh,
-        Horario AS horario,
+        CAST(TipoConcepto AS INT) AS tipo_concepto,
+        CAST(Coste AS BIT) AS coste,
+        CAST(ReportarRRHH AS BIT) AS reportar_rrhh,
+        CAST(Horario AS BIT) AS horario,
         TipoProyecto AS tipo_proyecto,
         CodTipoDepartamento AS codigo_tipo_departamento,
-        GeneraDescanso AS genera_descanso,
-        ConsumeDescanso AS consume_descanso,
-        Ausencia AS ausencia,
-        Abono AS abono,
-        Frecuencia AS frecuencia,
-        Estado AS estado,
-        ContabilizaHoras AS contabiliza_horas,
+        CAST(GeneraDescanso AS BIT) AS genera_descanso,
+        CAST(ConsumeDescanso AS BIT) AS consume_descanso,
+        CAST(Ausencia AS BIT) AS ausencia,
+        CAST(Abono AS BIT) AS abono,
+        CAST(Frecuencia AS BIT) AS frecuencia,
+        CAST(Estado AS BIT) AS estado,
+        CAST(ContabilizaHoras AS BIT) AS contabiliza_horas,
         dbt_valid_from AS fecha_insercion,
         dbt_updated_at AS fecha_modificacion,
         null AS fecha_eliminacion,
@@ -61,4 +61,4 @@
     FROM snapshot_tipos_hora
   )
 
-  SELECT * FROM rename_stg_tipos_hora
+  SELECT * FROM rename_casted_stg_tipos_hora

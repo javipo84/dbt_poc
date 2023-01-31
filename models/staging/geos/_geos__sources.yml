@@ -31,102 +31,325 @@ sources:
             description: >
               UUID tipo departamento
             tests:
-              - not_null
+              - not_null       
           - name: Activo
             description: >
               Indica el estado del registro
             tests:
               - not_null   
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: bit              
 
       - name: GEOS_ProyectoCBS   
         tags: ["hourly"]              
         columns:
           - name: Id
+            description: >
+              Natural Key
+            tests:
+              - not_null
+              - unique          
           - name: IdProyecto
+            description: >
+              UUID Proyecto
+            tests:
+              - not_null          
           - name: IdTipoDepartamentoEtiqueta
           - name: CodTipoCoste
           - name: CodigoPadre
           - name: Sufijo
+            description: >
+              Sufijo
+            tests:
+              - not_null            
           - name: EsAgregador
+            description: >
+              EsAgregador
+            tests:
+              - not_null            
           - name: CodTipoCbs
+            description: >
+              CodTipoCbs
+            tests:
+              - not_null            
           - name: CreatedBy
+            description: >
+              CreatedBy
+            tests:
+              - not_null            
           - name: CreatedAt
+            description: >
+              CreatedAt
+            tests:
+              - not_null            
           - name: ChangedBy
+            description: >
+              ChangedBy
+            tests:
+              - not_null            
           - name: ChangedAt
+            description: >
+              ChangedAt
+            tests:
+              - not_null            
 
       - name: GEOS_TiposHora       
         tags: ["hourly"]          
         columns:
           - name: Id
+            description: >
+              Natural Key
+            tests:
+              - not_null              
           - name: IdUnidadMedida
+            description: >
+              IdUnidadMedida
+            tests:
+              - not_null              
           - name: Codigo
+            description: >
+              Codigo
+            tests:
+              - not_null             
           - name: CodPais
+            description: >
+              CodPais           
           - name: CodigoCentral
+            description: >
+              CodigoCentral            
           - name: TipoConcepto
+            description: >
+              TipoConcepto
+            tests:
+              - not_null      
+              - accepted_values:
+                  values: [1,2,3]       
           - name: Coste
+            description: >
+              Coste
+            tests:
+              - not_null             
           - name: ReportarRRHH
+            description: >
+              ReportarRRHH
+            tests:
+              - not_null             
           - name: Horario
+            description: >
+              Horario
+            tests:
+              - not_null             
           - name: TipoProyecto
+            description: >
+              TipoProyecto
+            tests:
+              - not_null             
           - name: CodTipoDepartamento
-          - name: GeneraDescanso          
+            description: >
+              CodTipoDepartamento           
+          - name: GeneraDescanso
+            description: >
+              GeneraDescanso
+            tests:
+              - not_null                       
           - name: ConsumeDescanso
+            description: >
+              ConsumeDescanso
+            tests:
+              - not_null             
           - name: Ausencia
+            description: >
+              Ausencia
+            tests:
+              - not_null             
           - name: Abono
+            description: >
+              Abono
+            tests:
+              - not_null             
           - name: Frecuencia
+            description: >
+              Frecuencia
+            tests:
+              - not_null             
           - name: Estado
+            description: >
+              Estado
+            tests:
+              - not_null             
           - name: ContabilizaHoras
+            description: >
+              ContabilizaHoras           
           - name: CreatedBy
+            description: >
+              CreatedBy
+            tests:
+              - not_null             
           - name: CreatedAt
+            description: >
+              CreatedAt
+            tests:
+              - not_null             
           - name: ChangedBy
+            description: >
+              ChangedBy
+            tests:
+              - not_null             
           - name: ChangedAt
+            description: >
+              ChangedAt
+            tests:
+              - not_null             
 
       - name: GEOS_Proyectos      
         tags: ["hourly"]            
         columns:
           - name: Id
+            description: >
+              Natural Key
+            tests:
+              - not_null             
           - name: IdEstadoProyecto
+            description: >
+              Codigo
+            tests:
+              - not_null              
           - name: IdAgrupacionEstados
+            description: >
+              IdAgrupacionEstados
+            tests:
+              - not_null              
           - name: CodTipoProyecto
+            description: >
+              CodTipoProyecto
+            tests:
+              - not_null               
           - name: IdUnidadMedidaDefecto
+            description: >
+              IdUnidadMedidaDefecto
+            tests:
+              - not_null               
           - name: Codigo
+            description: >
+              Codigo
+            tests:
+              - not_null               
           - name: CodPais
+            description: >
+              CodPais
+            tests:
+              - not_null               
           - name: CodMoneda
+            description: >
+              CodMoneda          
           - name: Descripcion
+            description: >
+              Descripcion             
           - name: CodTipoEstructuraSocietaria
+            description: >
+              CodTipoEstructuraSocietaria             
           - name: CodModoTrabajoPresupuesto
-          - name: CodTipoDepartamento          
+            description: >
+              CodModoTrabajoPresupuesto             
+          - name: CodTipoDepartamento
+            description: >
+              CodTipoDepartamento                      
           - name: TransferenciaCoste
+            description: >
+              TransferenciaCoste             
           - name: GestorProyecto
+            description: >
+              GestorProyecto             
           - name: LimiteTramo
+            description: >
+              LimiteTramo             
           - name: DiaInicio
+            description: >
+              DiaInicio             
           - name: DiaFin
+            description: >
+              DiaFin             
           - name: Activo
+            description: >
+              Activo             
           - name: SistemaRrhhExterno
+            description: >
+              SistemaRrhhExterno             
           - name: ImportacionNominaExterna
+            description: >
+              ImportacionNominaExterna             
           - name: TieneRegistroProduccion
+            description: >
+              TieneRegistroProduccion             
           - name: DesviacionesHorario
+            description: >
+              DesviacionesHorario             
           - name: CodContabilidad
+            description: >
+              CodContabilidad             
           - name: CodLimiteConsumo
+            description: >
+              CodLimiteConsumo             
           - name: Tolerancia
+            description: >
+              Tolerancia             
           - name: Tasas
+            description: >
+              Tasas             
           - name: ProvisionFinObra
+            description: >
+              ProvisionFinObra             
           - name: FechaBaja
+            description: >
+              FechaBaja             
           - name: NoCertificacionAdicionalPdt
+            description: >
+              NoCertificacionAdicionalPdt             
           - name: EnviarProvision
+            description: >
+              EnviarProvision             
           - name: Comprometido
+            description: >
+              Comprometido             
           - name: EsDepartamento
+            description: >
+              EsDepartamento             
           - name: PrecierreCentralizado
+            description: >
+              PrecierreCentralizado             
           - name: Ofertas
+            description: >
+              Ofertas             
           - name: NoSeleccionablePermisos
+            description: >
+              NoSeleccionablePermisos             
           - name: CodSubtipoObra
+            description: >
+              CodSubtipoObra             
           - name: ResponsablePais
+            description: >
+              ResponsablePais             
           - name: Delegado
+            description: >
+              Delegado             
           - name: Delegacion
+            description: >
+              Delegacion             
           - name: JefeAdministracion
+            description: >
+              JefeAdministracion             
           - name: CreatedBy
+            description: >
+              CreatedBy             
           - name: CreatedAt
+            description: >
+              CreatedAt             
           - name: ChangedBy
+            description: >
+              ChangedBy             
           - name: ChangedAt
+            description: >
+              ChangedAt             
 
       - name: GEOS_Imputaciones        
         tags: ["daily"]      
@@ -146,12 +369,35 @@ sources:
               - not_null
           - name: IdTipoHora
             description: >
-              Indica el estado del registro
+              UUID Tipo Hora
             tests:
               - not_null       
-          - name: IdProyecto        
+              - relationships:
+                  to: ref('stg_geos__tipos_hora')
+                  field: nk_tipos_hora              
+          - name: IdProyecto     
+            description: >
+              UUID Proyecto
+            tests:
+              - not_null           
+              - relationships:
+                  to: ref('stg_geos__proyecto')
+                  field: nk_proyecto                       
           - name: IdProyectoCbs
+            description: >
+              UUID Proyecto Cbs
+            tests:
+              - not_null       
+              - relationships:
+                  to: ref('stg_geos__proyecto_cbs')
+                  field: nk_proyecto_cbs                       
           - name: CodTipoDepartamentoTarea
+            description: >
+              UUID Código Tipo Departamento Tarea
+            tests:              
+              - relationships:
+                  to: ref('stg_geos__tipo_departamento_tareas')
+                  field: nk_tipo_departamento_tareas                        
           - name: FechaSemana
           - name: Comentarios
           - name: ComentariosAprobador

@@ -21,16 +21,16 @@
     FROM {{ ref('snapshot_geos__proyecto_cbs') }}
   ),
 
-  rename_stg_proyecto_cbs AS (
+  rename_casted_stg_proyecto_cbs AS (
     SELECT
         dbt_scd_id AS sk_proyecto_cbs,
-        Id AS nk_proyecto_cbs,
-        IdProyecto AS id_proyecto,
-        IdTipoDepartamentoEtiqueta AS id_tipo_departamento_etiqueta,
+        CAST(Id AS INT) AS nk_proyecto_cbs,
+        CAST(IdProyecto AS INT) AS id_proyecto,
+        CAST(IdTipoDepartamentoEtiqueta AS INT) AS id_tipo_departamento_etiqueta,
         CodTipoCoste AS codigo_tipo_coste,
         CodigoPadre AS codigo_padre,
         Sufijo AS sufijo,
-        EsAgregador AS es_agregador,
+        CAST(EsAgregador AS BIT) AS es_agregador,
         CodTipoCbs AS codigo_tipo_cbs,
         dbt_valid_from AS fecha_insercion,
         dbt_updated_at AS fecha_modificacion,
@@ -41,4 +41,4 @@
     FROM snapshot_proyecto_cbs
   )
 
-  SELECT * FROM rename_stg_proyecto_cbs
+  SELECT * FROM rename_casted_stg_proyecto_cbs

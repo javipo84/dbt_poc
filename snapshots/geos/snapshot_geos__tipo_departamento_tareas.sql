@@ -19,8 +19,8 @@
     UNION ALL
 
     SELECT
-        'No Data' AS Codigo,
-        'No Data' AS CodTipoDepartamento,
+        -1 AS Codigo,
+        -1 AS CodTipoDepartamento,
         0 AS Activo
 
 {% endsnapshot %}

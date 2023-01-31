@@ -1,8 +1,7 @@
 {% snapshot snapshot_geos__proyecto_cbs %}
 
 {{
-    config(      
-      target_schema='dbt_curated',
+    config(            
       unique_key='Id',
       strategy='check',
       check_cols=['IdProyecto','IdTipoDepartamentoEtiqueta','CodTipoCoste','CodigoPadre','Sufijo','EsAgregador','CodTipoCbs'],      

@@ -1,8 +1,7 @@
 {% snapshot snapshot_geos__tipos_hora %}
 
 {{
-    config(      
-      target_schema='dbt_curated',
+    config(            
       unique_key='Id',
       strategy='check',
       check_cols=['IdUnidadMedida','Codigo','CodPais','CodigoCentral','TipoConcepto','Coste','ReportarRRHH','Horario','TipoProyecto','CodTipoDepartamento'

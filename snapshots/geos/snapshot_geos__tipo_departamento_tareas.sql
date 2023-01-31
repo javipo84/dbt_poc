@@ -1,8 +1,7 @@
 {% snapshot snapshot_geos__tipo_departamento_tareas %}
 
 {{
-    config(      
-      target_schema='dbt_curated',
+    config(            
       unique_key='Codigo',
       strategy='check',
       check_cols=['CodTipoDepartamento', 'Activo'],      

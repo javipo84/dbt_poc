@@ -35,7 +35,11 @@ models:
   dbt_poc:    
     staging:      
       +materialized: view
-      +schema: dbt_curated
+      +schema: "{{ env_var('SCHEMA_SILVER') }}"
     mart:      
       +materialized: table
-      +schema: dbt_analytics
+      +schema: "{{ env_var('SCHEMA_GOLD') }}"
+
+snapshots:  
+  dbt_poc:  
+    +target_schema: "{{ env_var('SCHEMA_SILVER') }}"    

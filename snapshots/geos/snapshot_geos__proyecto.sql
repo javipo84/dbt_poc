@@ -1,8 +1,7 @@
 {% snapshot snapshot_geos__proyecto %}
 
 {{
-    config(      
-      target_schema='dbt_curated',
+    config(            
       unique_key='Id',
       strategy='check',
       check_cols=['IdEstadoProyecto', 'IdAgrupacionEstados','CodTipoProyecto','IdUnidadMedidaDefecto','Codigo','CodPais','CodMoneda','Descripcion'

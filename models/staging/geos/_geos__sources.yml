@@ -41,7 +41,9 @@ sources:
                   column_type: bit              
 
       - name: GEOS_ProyectoCBS   
-        tags: ["hourly"]              
+        tags: ["hourly"]  
+        tests:
+          - table_has_rows
         columns:
           - name: Id
             description: >
@@ -94,7 +96,9 @@ sources:
               - not_null            
 
       - name: GEOS_TiposHora       
-        tags: ["hourly"]          
+        tags: ["hourly"]         
+        tests:
+          - table_has_rows         
         columns:
           - name: Id
             description: >
@@ -202,7 +206,9 @@ sources:
               - not_null             
 
       - name: GEOS_Proyectos      
-        tags: ["hourly"]            
+        tags: ["hourly"]    
+        tests:
+          - table_has_rows                
         columns:
           - name: Id
             description: >
@@ -352,7 +358,7 @@ sources:
               ChangedAt             
 
       - name: GEOS_Imputaciones        
-        tags: ["daily"]      
+        tags: ["daily"]    
         description: >
           Datos sobre las imputaciones
         columns:

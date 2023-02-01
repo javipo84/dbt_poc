@@ -16,7 +16,6 @@ sources:
 
     tables:
       - name: GEOS_TipoDepartamentoTareas        
-        tags: ["hourly"]
         description: >
           Datos sobre las tareas por departamento
         columns:

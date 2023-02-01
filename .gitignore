@@ -3,4 +3,7 @@ target/
 dbt_packages/
 logs/
 .env
-.ps1
+*.user.yml
+*.ps1
+settings.json
+

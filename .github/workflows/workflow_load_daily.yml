@@ -1,4 +1,4 @@
-name: ci_workflow
+name: workflow_load_daily
 
 on:
   schedule:

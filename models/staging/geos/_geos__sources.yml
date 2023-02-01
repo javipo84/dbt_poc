@@ -2,9 +2,8 @@ version: 2
 
 sources:
 
-  - name: geos # name of the source 
-    schema: raw # this is the schema our raw data lives in
-    database: DWH100c # this is the name of our database
+  - name: geos
+    schema: raw
 
     quoting:
       database: false

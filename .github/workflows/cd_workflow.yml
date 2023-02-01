@@ -42,7 +42,7 @@ jobs:
         SCHEMA_GOLD: ${{ secrets.SCHEMA_GOLD }}         
 
     - name: dbt build
-      run: dbt build --target pro
+      run: dbt build --target pro --fail-fast
       env:
         DBT_PROFILES_DIR: ./
         SYNAPSE_SERVER: ${{ secrets.SYNAPSE_SERVER }}

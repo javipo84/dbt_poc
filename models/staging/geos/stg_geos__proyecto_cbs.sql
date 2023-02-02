@@ -42,3 +42,7 @@
   )
 
   SELECT * FROM rename_casted_stg_proyecto_cbs
+
+  {%- call statement('db_util_log', fetch_result=True) -%}
+    {{ db_util_log('GEOS', 'curated', 'geos__proyecto_cbs', 'Actualización origen') }}
+  {%- endcall -%}

@@ -110,3 +110,7 @@
   )
 
   SELECT * FROM rename_stg_proyecto
+
+  {%- call statement('db_util_log', fetch_result=True) -%}
+    {{ db_util_log('GEOS', 'curated', 'geos__proyecto', 'Actualización origen') }}
+  {%- endcall -%}

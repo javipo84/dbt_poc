@@ -39,8 +39,6 @@ models:
     mart:      
       +materialized: table
       +schema: "{{ env_var('SCHEMA_GOLD') }}"
-  elementary:
-    +schema: "elementary"      
 
 snapshots:  
   dbt_poc:  

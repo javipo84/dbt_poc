@@ -76,10 +76,10 @@
         LimiteTramo AS limite_tramo,
         CAST(DiaInicio AS INT) AS dia_inicio,
         CAST(DiaFin AS INT) AS dia_fin,
-        CAST(Activo AS INT) AS activo,
-        CAST(SistemaRrhhExterno AS INT) AS sistema_rrhh_externo,
-        CAST(ImportacionNominaExterna AS INT) AS importacion_nomina_externa,
-        CAST(TieneRegistroProduccion AS INT) AS tiene_registro_produccion,
+        CAST(Activo AS BIT) AS activo,
+        CAST(SistemaRrhhExterno AS BIT) AS sistema_rrhh_externo,
+        CAST(ImportacionNominaExterna AS BIT) AS importacion_nomina_externa,
+        CAST(TieneRegistroProduccion AS BIT) AS tiene_registro_produccion,
         CAST(DesviacionesHorario AS INT) AS desviaciones_horarios,
         CodContabilidad AS codigo_contabilidad,
         CodLimiteConsumo AS codigo_limite_consumo,
@@ -87,12 +87,12 @@
         CAST(Tasas AS FLOAT) AS tasas,
         CAST(ProvisionFinObra AS FLOAT) AS provision_fin_obra,
         CAST(FechaBaja AS DATETIME) AS fecha_baja,
-        CAST(NoCertificacionAdicionalPdt AS INT) AS no_certificacion_adicional_pdt,
-        CAST(EnviarProvision AS INT) AS enviar_provision,
-        CAST(Comprometido AS INT) AS comprometido,
-        CAST(EsDepartamento AS INT) AS es_departamento,
-        CAST(PrecierreCentralizado AS INT) AS precierre_centralizado,
-        CAST(Ofertas AS INT) AS ofertas,
+        CAST(NoCertificacionAdicionalPdt AS BIT) AS no_certificacion_adicional_pdt,
+        CAST(EnviarProvision AS BIT) AS enviar_provision,
+        CAST(Comprometido AS BIT) AS comprometido,
+        CAST(EsDepartamento AS BIT) AS es_departamento,
+        CAST(PrecierreCentralizado AS BIT) AS precierre_centralizado,
+        CAST(Ofertas AS BIT) AS ofertas,
         IdGrupoProyecto AS id_grupo_proyecto,
         NoSeleccionablePermisos AS no_seleccionable_permisos,
         CodSubtipoObra AS codigo_subtipo_obra,
@@ -110,3 +110,7 @@
   )
 
   SELECT * FROM rename_stg_proyecto
+
+  {%- call statement('db_util_log', fetch_result=True) -%}
+    {{ db_util_log('GEOS', 'curated', 'geos__proyecto', 'Actualización origen') }}
+  {%- endcall -%}

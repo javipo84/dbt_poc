@@ -22,7 +22,7 @@
         CAST(Codigo AS INT) AS nk_tipo_departamento_tareas,
         CAST(Codigo AS INT) AS codigo,
         CAST(CodTipoDepartamento AS INT) AS codigo_tipo_departamento,
-        CAST(Activo AS INT) AS activo,
+        CAST(Activo AS BIT) AS activo,
         dbt_valid_from AS fecha_insercion,
         dbt_updated_at AS fecha_modificacion,
         null AS fecha_eliminacion,
@@ -33,3 +33,7 @@
   )
 
   SELECT * FROM rename_casted_stg_tipo_departamento_tareas
+
+  {%- call statement('db_util_log', fetch_result=True) -%}
+    {{ db_util_log('GEOS', 'curated', 'geos__tipo_departamento_tareas', 'Actualización origen') }}
+  {%- endcall -%}

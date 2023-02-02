@@ -2,25 +2,16 @@ dbt_poc:
   target: dev
   outputs:
     dev:
-      account: civicapartner.west-europe.azure
-      database: DBT_JPARRA
-      authenticator: externalbrowser      
-      role: AVANZADO
-      schema: dbt_curated
+      type: synapse
+      driver: 'ODBC Driver 17 for SQL Server'
+      server: "{{ env_var('SYNAPSE_SERVER') }}"
+      port: 1433
+      database: "{{ env_var('DABATASE_SYNAPSE') }}"
+      schema: "{{ env_var('SCHEMA_SYNAPSE') }}"
+      authentication: "{{ env_var('AUTHENTICATION_SYNAPSE') }}"
+      user: "{{ env_var('USER_SYNAPSE') }}"
+      password: "{{ env_var('PASSWORD_SYNAPSE') }}"
       threads: 4
-      type: snowflake
-      user: javier.parra@civica-soft.com
-      warehouse: WH_BASICO
-      #type: synapse
-      #driver: 'ODBC Driver 17 for SQL Server'
-      #server: "{{ env_var('SYNAPSE_SERVER') }}"
-      #port: 1433
-      #database: "{{ env_var('DABATASE_SYNAPSE') }}"
-      #schema: "{{ env_var('SCHEMA_SYNAPSE') }}"
-      #authentication: "{{ env_var('AUTHENTICATION_SYNAPSE') }}"
-      #user: "{{ env_var('USER_SYNAPSE') }}"
-      #password: "{{ env_var('PASSWORD_SYNAPSE') }}"
-      #threads: 4
 
     pro:
       type: synapse
@@ -33,16 +24,3 @@ dbt_poc:
       user: "{{ env_var('USER_SYNAPSE') }}"
       password: "{{ env_var('PASSWORD_SYNAPSE') }}"      
       threads: 4
-
-elementary:
-  outputs:
-    default:
-      type: snowflake
-      account: civicapartner.west-europe.azure
-      user: javier.parra@civica-soft.com
-      authenticator: externalbrowser      
-      role: AVANZADO
-      warehouse: WH_BASICO
-      database: DBT_JPARRA
-      schema: elementary
-      threads: 4      

@@ -6,9 +6,4 @@ logs/
 *.user.yml
 *.ps1
 settings.json
-edr.log
-elementary_output.json
-elementary_report.html
-
-
 

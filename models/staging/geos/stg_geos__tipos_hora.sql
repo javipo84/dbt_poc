@@ -40,18 +40,18 @@
         CodPais AS codigo_pais,
         CodigoCentral AS codigo_central,
         CAST(TipoConcepto AS INT) AS tipo_concepto,
-        CAST(Coste AS INT) AS coste,
-        CAST(ReportarRRHH AS INT) AS reportar_rrhh,
-        CAST(Horario AS INT) AS horario,
+        CAST(Coste AS BIT) AS coste,
+        CAST(ReportarRRHH AS BIT) AS reportar_rrhh,
+        CAST(Horario AS BIT) AS horario,
         TipoProyecto AS tipo_proyecto,
         CodTipoDepartamento AS codigo_tipo_departamento,
-        CAST(GeneraDescanso AS INT) AS genera_descanso,
-        CAST(ConsumeDescanso AS INT) AS consume_descanso,
-        CAST(Ausencia AS INT) AS ausencia,
-        CAST(Abono AS INT) AS abono,
-        CAST(Frecuencia AS INT) AS frecuencia,
-        CAST(Estado AS INT) AS estado,
-        CAST(ContabilizaHoras AS INT) AS contabiliza_horas,
+        CAST(GeneraDescanso AS BIT) AS genera_descanso,
+        CAST(ConsumeDescanso AS BIT) AS consume_descanso,
+        CAST(Ausencia AS BIT) AS ausencia,
+        CAST(Abono AS BIT) AS abono,
+        CAST(Frecuencia AS BIT) AS frecuencia,
+        CAST(Estado AS BIT) AS estado,
+        CAST(ContabilizaHoras AS BIT) AS contabiliza_horas,
         dbt_valid_from AS fecha_insercion,
         dbt_updated_at AS fecha_modificacion,
         null AS fecha_eliminacion,
@@ -62,3 +62,7 @@
   )
 
   SELECT * FROM rename_casted_stg_tipos_hora
+
+  {%- call statement('db_util_log', fetch_result=True) -%}
+    {{ db_util_log('GEOS', 'curated', 'geos__tipos_hora', 'Actualización origen') }}
+  {%- endcall -%}

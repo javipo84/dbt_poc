@@ -10,6 +10,11 @@ Prueba de concepto para comprobar el funcionamiento y la forma de trabajo entre 
 - Versionado
 - CI/CD
 
+
+![image](https://user-images.githubusercontent.com/51535157/216360944-379234a4-8836-4a59-82a8-46f90de0778f.png)
+
+
+
 ## Configuración Inicial
 
 A continuación se describen los pasos necesarios para instalar y ejecutar este proyecto

@@ -31,7 +31,3 @@ dim_tipo_departamento_tareas AS (
 )
 
 SELECT * FROM dim_tipo_departamento_tareas
-
-  {%- call statement('db_util_log', fetch_result=True) -%}
-    {{ db_util_log('GEOS', 'analytics', 'dim_geos__tipo_departamento_tareas', 'Actualización SCD2') }}
-  {%- endcall -%}

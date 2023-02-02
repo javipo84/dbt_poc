@@ -82,7 +82,3 @@ SELECT * FROM fct_imputaciones
     WHERE created_at > (SELECT MAX(created_at) FROM {{ this }})
 
     {% endif %}
-
-  {%- call statement('db_util_log', fetch_result=True) -%}
-    {{ db_util_log('GEOS', 'analytics', 'fct_geos__imputaciones', 'Actualización incremental') }}
-  {%- endcall -%}

@@ -39,3 +39,7 @@ dim_proyecto_cbs AS (
 )
 
 SELECT * FROM dim_proyecto_cbs
+
+  {%- call statement('db_util_log', fetch_result=True) -%}
+    {{ db_util_log('GEOS', 'analytics', 'dim_geos__proyecto_cbs', 'Actualización SCD2') }}
+  {%- endcall -%}

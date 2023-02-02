@@ -62,3 +62,7 @@
   )
 
   SELECT * FROM rename_casted_stg_tipos_hora
+
+  {%- call statement('db_util_log', fetch_result=True) -%}
+    {{ db_util_log('GEOS', 'curated', 'geos__tipos_hora', 'Actualización origen') }}
+  {%- endcall -%}

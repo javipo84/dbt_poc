@@ -2,26 +2,36 @@ version: 2
 
 models:
   - name: fct_geos__imputaciones
+    description: >
+      Tabla de hechos con los datos de las imputaciones realizadas por los usuarios  
     config:      
       tags:
         - "daily"
 
   - name: dim_geos__tipo_departamento_tareas
+    description: >
+      Dimensión SCD2 con los datos de los tipos de departamentos y tareas   
     config:      
       tags:
         - "hourly"    
 
   - name: dim_geos__proyecto_cbs
+    description: >
+      Dimensión SCD2 con los datos de los proyectos cbs  
     config:      
       tags:
         - "hourly"
 
   - name: dim_geos__tipos_hora
+    description: >
+      Dimensión SCD2 con los datos de los tipos de hora  
     config:      
       tags:
         - "hourly"
 
   - name: dim_geos__proyecto
+    description: >
+      Dimensión SCD2 con los datos de los proyectos  
     config:      
       tags:
         - "hourly"        

@@ -3,8 +3,8 @@
 {{
     config(            
       unique_key='Id',
-      strategy='check',
-      check_cols=['IdProyecto','IdTipoDepartamentoEtiqueta','CodTipoCoste','CodigoPadre','Sufijo','EsAgregador','CodTipoCbs'],      
+      strategy='timestamp',
+      updated_at='ChangedAt',      
       invalidate_hard_deletes=True,
       dist='HASH(Id)',
     )
@@ -18,7 +18,8 @@
         CodigoPadre,
         Sufijo,
         EsAgregador,
-        CodTipoCbs
+        CodTipoCbs,
+        ChangedAt
     FROM {{ source('geos', 'GEOS_ProyectoCBS') }}
 
     UNION ALL
@@ -31,6 +32,7 @@
         'No Data' AS CodigoPadre,
         'No Data' AS Sufijo,
         0 AS EsAgregador,
-        'No Data' AS CodTipoCbs
+        'No Data' AS CodTipoCbs,
+        '9999-12-31' as ChangedAt
 
 {% endsnapshot %}

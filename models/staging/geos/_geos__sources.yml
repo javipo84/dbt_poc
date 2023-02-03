@@ -17,7 +17,8 @@ sources:
     tables:
       - name: GEOS_TipoDepartamentoTareas        
         description: >
-          Datos sobre las tareas por departamento
+          Datos sobre los distintos tipos tareas por departamento
+        tags: ["hourly"]           
         columns:
           - name: Codigo
             description: >
@@ -27,7 +28,7 @@ sources:
               - unique
           - name: CodTipoDepartamento
             description: >
-              UUID tipo departamento
+              Código identificador del tipo de departamento
             tests:
               - not_null       
           - name: Activo
@@ -39,7 +40,9 @@ sources:
                   column_type: bit              
 
       - name: GEOS_ProyectoCBS   
-        tags: ["hourly"]  
+        description: >
+          Datos sobre los distintos proyectos cbs      
+        tags: ["hourly"]          
         tests:
           - table_has_rows
         columns:
@@ -51,12 +54,18 @@ sources:
               - unique          
           - name: IdProyecto
             description: >
-              UUID Proyecto
+              Código identificador del proyecto
             tests:
               - not_null          
           - name: IdTipoDepartamentoEtiqueta
+            description: >
+              Código identificador de etiqueta              
           - name: CodTipoCoste
+            description: >
+              Código identificador del tipo de coste          
           - name: CodigoPadre
+            description: >
+              Código identificador de la entidad padre
           - name: Sufijo
             description: >
               Sufijo
@@ -64,36 +73,38 @@ sources:
               - not_null            
           - name: EsAgregador
             description: >
-              EsAgregador
+              Indica si el proyecto es agregador de otros o no
             tests:
               - not_null            
           - name: CodTipoCbs
             description: >
-              CodTipoCbs
+              Código identificador Cbs
             tests:
               - not_null            
           - name: CreatedBy
             description: >
-              CreatedBy
+              Nombre del usuario creador del proyecto
             tests:
               - not_null            
           - name: CreatedAt
             description: >
-              CreatedAt
+              Fecha de creación
             tests:
               - not_null            
           - name: ChangedBy
             description: >
-              ChangedBy
+              Nombre del usuario que cambia el proyecto
             tests:
               - not_null            
           - name: ChangedAt
             description: >
-              ChangedAt
+              Fecha de cambio
             tests:
               - not_null            
 
       - name: GEOS_TiposHora       
+        description: >
+          Datos sobre los distintos tipos de hora      
         tags: ["hourly"]         
         tests:
           - table_has_rows         
@@ -105,23 +116,23 @@ sources:
               - not_null              
           - name: IdUnidadMedida
             description: >
-              IdUnidadMedida
+              Código identificador de la medida
             tests:
               - not_null              
           - name: Codigo
             description: >
-              Codigo
+              Código
             tests:
               - not_null             
           - name: CodPais
             description: >
-              CodPais           
+              Código identificador del pais
           - name: CodigoCentral
             description: >
-              CodigoCentral            
+              Código identificador de la sede o centrar          
           - name: TipoConcepto
             description: >
-              TipoConcepto
+              Codigo identificador del tipo de concepto
             tests:
               - not_null      
               - accepted_values:
@@ -133,7 +144,7 @@ sources:
               - not_null             
           - name: ReportarRRHH
             description: >
-              ReportarRRHH
+              Indica si se debe reportar la tarea a rrhh
             tests:
               - not_null             
           - name: Horario
@@ -143,20 +154,20 @@ sources:
               - not_null             
           - name: TipoProyecto
             description: >
-              TipoProyecto
+              Código identificador del tipo de proyecto
             tests:
               - not_null             
           - name: CodTipoDepartamento
             description: >
-              CodTipoDepartamento           
+              Código identificador del tipo de departamento
           - name: GeneraDescanso
             description: >
-              GeneraDescanso
+              Indica si es de tipo descanso
             tests:
               - not_null                       
           - name: ConsumeDescanso
             description: >
-              ConsumeDescanso
+              Indica si es de tipo descanso
             tests:
               - not_null             
           - name: Ausencia
@@ -181,29 +192,31 @@ sources:
               - not_null             
           - name: ContabilizaHoras
             description: >
-              ContabilizaHoras           
+              Indica si contabiliza horas
           - name: CreatedBy
             description: >
-              CreatedBy
+              Nombre del usuario creador del proyecto
             tests:
               - not_null             
           - name: CreatedAt
             description: >
-              CreatedAt
+              Fecha de creación
             tests:
               - not_null             
           - name: ChangedBy
             description: >
-              ChangedBy
+              Nombre del usuario que cambia el proyecto
             tests:
               - not_null             
           - name: ChangedAt
             description: >
-              ChangedAt
+              Fecha de cambio
             tests:
               - not_null             
 
-      - name: GEOS_Proyectos      
+      - name: GEOS_Proyectos   
+        description: >
+          Datos sobre los distintos proyectos
         tags: ["hourly"]    
         tests:
           - table_has_rows                
@@ -215,85 +228,85 @@ sources:
               - not_null             
           - name: IdEstadoProyecto
             description: >
-              Codigo
+              Codigo identificador del estado
             tests:
               - not_null              
           - name: IdAgrupacionEstados
             description: >
-              IdAgrupacionEstados
+              Código identificador del agrupador de estados
             tests:
               - not_null              
           - name: CodTipoProyecto
             description: >
-              CodTipoProyecto
+              Código identificador del tipo de proyecto
             tests:
               - not_null               
           - name: IdUnidadMedidaDefecto
             description: >
-              IdUnidadMedidaDefecto
+              Código identificador de la unidad por defecto
             tests:
               - not_null               
           - name: Codigo
             description: >
-              Codigo
+              Código
             tests:
               - not_null               
           - name: CodPais
             description: >
-              CodPais
+              Código identificador del país
             tests:
               - not_null               
           - name: CodMoneda
             description: >
-              CodMoneda          
+              Código identificador de la moneda
           - name: Descripcion
             description: >
-              Descripcion             
+              Descripción             
           - name: CodTipoEstructuraSocietaria
             description: >
-              CodTipoEstructuraSocietaria             
+              Código identificador del tipo de estructura societaria
           - name: CodModoTrabajoPresupuesto
             description: >
-              CodModoTrabajoPresupuesto             
+              Código identificador del modo de trabajo
           - name: CodTipoDepartamento
             description: >
-              CodTipoDepartamento                      
+              Código identificador del tipo de departamento 
           - name: TransferenciaCoste
             description: >
-              TransferenciaCoste             
+              Coste de la transferencia
           - name: GestorProyecto
             description: >
-              GestorProyecto             
+              Gestor del proyecto        
           - name: LimiteTramo
             description: >
-              LimiteTramo             
+              Límite tramo
           - name: DiaInicio
             description: >
-              DiaInicio             
+              Día de inicio          
           - name: DiaFin
             description: >
-              DiaFin             
+              Día de fin         
           - name: Activo
             description: >
-              Activo             
+              Indica el estado         
           - name: SistemaRrhhExterno
             description: >
-              SistemaRrhhExterno             
+              Indica si pertenece al sistema de rrhh externo
           - name: ImportacionNominaExterna
             description: >
-              ImportacionNominaExterna             
+              Importación nómina externa             
           - name: TieneRegistroProduccion
             description: >
-              TieneRegistroProduccion             
+              Indica si tiene registro en producción          
           - name: DesviacionesHorario
             description: >
-              DesviacionesHorario             
+              Indica si presenta desviaciones respecto al horario
           - name: CodContabilidad
             description: >
-              CodContabilidad             
+              Código identificador de contabilidad             
           - name: CodLimiteConsumo
             description: >
-              CodLimiteConsumo             
+              Código identificador del límite de consumo
           - name: Tolerancia
             description: >
               Tolerancia             
@@ -302,58 +315,58 @@ sources:
               Tasas             
           - name: ProvisionFinObra
             description: >
-              ProvisionFinObra             
+              Provisión fin de obra            
           - name: FechaBaja
             description: >
-              FechaBaja             
+              Fecha de baja 
           - name: NoCertificacionAdicionalPdt
             description: >
-              NoCertificacionAdicionalPdt             
+              Indica si se necesita certificación adicional pdt
           - name: EnviarProvision
             description: >
-              EnviarProvision             
+              Indica si se debe enviar provisión
           - name: Comprometido
             description: >
               Comprometido             
           - name: EsDepartamento
             description: >
-              EsDepartamento             
+              Indica si pertenece a un departamento           
           - name: PrecierreCentralizado
             description: >
-              PrecierreCentralizado             
+              Precierre centralizado             
           - name: Ofertas
             description: >
               Ofertas             
           - name: NoSeleccionablePermisos
             description: >
-              NoSeleccionablePermisos             
+              Indica si los permisos son seleccionables
           - name: CodSubtipoObra
             description: >
-              CodSubtipoObra             
+              Código identificador del sub tipo de obra
           - name: ResponsablePais
             description: >
-              ResponsablePais             
+              Responsable país 
           - name: Delegado
             description: >
               Delegado             
           - name: Delegacion
             description: >
-              Delegacion             
+              Delegación             
           - name: JefeAdministracion
             description: >
-              JefeAdministracion             
+              Jefe de administracion             
           - name: CreatedBy
             description: >
-              CreatedBy             
+              Nombre del usuario creador del proyecto             
           - name: CreatedAt
             description: >
-              CreatedAt             
+              Fecha de creación             
           - name: ChangedBy
             description: >
-              ChangedBy             
+              Nombre del usuario que cambia el proyecto             
           - name: ChangedAt
             description: >
-              ChangedAt             
+              Fecha de cambio             
 
       - name: GEOS_Imputaciones        
         tags: ["daily"]    
@@ -368,12 +381,12 @@ sources:
               - unique
           - name: IdAsignacion
             description: >
-              UUID tipo asignacion
+              Código identificador de la asignación
             tests:
               - not_null
           - name: IdTipoHora
             description: >
-              UUID Tipo Hora
+              FK con la tabla tipo de hora
             tests:
               - not_null       
               - relationships:
@@ -381,7 +394,7 @@ sources:
                   field: nk_tipos_hora              
           - name: IdProyecto     
             description: >
-              UUID Proyecto
+              FK con la tabla proyecto
             tests:
               - not_null           
               - relationships:
@@ -389,7 +402,7 @@ sources:
                   field: nk_proyecto                       
           - name: IdProyectoCbs
             description: >
-              UUID Proyecto Cbs
+              FK con la tabla proyecto cbs
             tests:
               - not_null       
               - relationships:
@@ -397,16 +410,28 @@ sources:
                   field: nk_proyecto_cbs                       
           - name: CodTipoDepartamentoTarea
             description: >
-              UUID Código Tipo Departamento Tarea
+              FK con la tabla tipo departamento tarea
             tests:              
               - relationships:
                   to: ref('stg_geos__tipo_departamento_tareas')
                   field: nk_tipo_departamento_tareas                        
           - name: FechaSemana
+            description: >
+              Fecha semana          
           - name: Comentarios
+            description: >
+              Comentarios del usuario          
           - name: ComentariosAprobador
+            description: >
+              Comentarios del usuario aprobador          
           - name: CreatedBy
+            description: >
+              Nombre del usuario creador del proyecto          
           - name: CreatedAt
+            description: >
+              Fecha de creación          
           - name: ChangedBy		                    
+            description: >
+              Nombre del usuario que cambia el proyecto          
 		      
 	             

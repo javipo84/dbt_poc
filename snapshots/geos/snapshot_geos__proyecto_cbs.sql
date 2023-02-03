@@ -33,6 +33,6 @@
         'No Data' AS Sufijo,
         0 AS EsAgregador,
         'No Data' AS CodTipoCbs,
-        '9999-12-31' as ChangedAt
+        '9999-12-31' AS ChangedAt
 
 {% endsnapshot %}

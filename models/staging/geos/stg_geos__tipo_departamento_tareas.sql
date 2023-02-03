@@ -30,8 +30,7 @@
         dbt_valid_to AS fecha_hasta,
         CASE WHEN dbt_valid_to IS NULL THEN 1 ELSE 0 END AS actual,
         {{ dbt_utils.generate_surrogate_key ([
-            'Codigo', 
-            'CodTipoDepartamento', 
+            'Codigo',             
             'Activo'
           ])
         }} AS hash_code

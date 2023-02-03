@@ -29,13 +29,12 @@
         dbt_valid_from AS fecha_desde,
         dbt_valid_to AS fecha_hasta,
         CASE WHEN dbt_valid_to IS NULL THEN 1 ELSE 0 END AS actual,
-        {{ dbt_utils.generate_surrogate_key([
-                'Codigo', 
-                'CodTipoDepartamento',
-                'Activo'
-            ])
-        }} as hash        
-
+        {{ dbt_utils.generate_surrogate_key ([
+            'Codigo', 
+            'CodTipoDepartamento', 
+            'Activo'
+          ])
+        }} AS hash_code
     FROM snapshot_tipo_departamento_tareas
   )
 

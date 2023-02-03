@@ -120,7 +120,7 @@
                 'CodModoTrabajoPresupuesto',
                 'CodTipoDepartamento'
             ])
-        }} as hash        
+        }} AS hash_code
     FROM snapshot_proyecto
   )
 

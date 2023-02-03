@@ -40,15 +40,15 @@
         CASE WHEN dbt_valid_to IS NULL THEN 1 ELSE 0 END AS actual,
         {{ dbt_utils.generate_surrogate_key([
                 'Id', 
-                'IdProyecto',
-                'IdTipoDepartamentoEtiqueta',
-                'CodTipoCoste',
-                'CodigoPadre',
-                'Sufijo',
-                'EsAgregador',
+                'IdProyecto', 
+                'IdTipoDepartamentoEtiqueta', 
+                'CodTipoCoste', 
+                'CodigoPadre', 
+                'Sufijo', 
+                'EsAgregador', 
                 'CodTipoCbs'
             ])
-        }} as hash
+        }} AS hash_code
     FROM snapshot_proyecto_cbs
   )
 

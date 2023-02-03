@@ -2,21 +2,29 @@ version: 2
 
 snapshots:
   - name: snapshot_geos__tipo_departamento_tareas
+    description: >
+      Carga SCD2 con los datos de los tipos de departamentos y tareas    
     config:      
       tags:
         - "hourly"      
 
   - name: snapshot_geos__proyecto_cbs
+    description: >
+      Carga SCD2 con los datos de los proyectos cbs  
     config:      
       tags:
         - "hourly"
 
   - name: snapshot_geos__tipos_hora
+    description: >
+      Carga SCD2 con los datos de los tipos de hora  
     config:      
       tags:
         - "hourly"
 
   - name: snapshot_geos__proyecto
+    description: >
+      Carga SCD2 con los datos de los proyectos  
     config:      
       tags:
         - "hourly"                

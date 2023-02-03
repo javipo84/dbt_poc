@@ -6,7 +6,8 @@
       strategy='check',
       check_cols=['IdEstadoProyecto', 'IdAgrupacionEstados','CodTipoProyecto','IdUnidadMedidaDefecto','Codigo','CodPais','CodMoneda','Descripcion'
                  ,'CodTipoEstructuraSocietaria','CodModoTrabajoPresupuesto','CodTipoDepartamento','TransferenciaCoste','GestorProyecto'
-                 ,'DiasPlazoPeriodo','LimiteTramo'],      
+                 ,'DiasPlazoPeriodo','LimiteTramo','DiaInicio','DiaFin','Activo','SistemaRrhhExterno','ImportacionNominaExterna','TieneRegistroProduccion'
+                 ,'DesviacionesHorario','CodContabilidad','CodLimiteConsumo','Tolerancia','Tasas'],      
       invalidate_hard_deletes=True,
       dist='HASH(Id)',
     )	

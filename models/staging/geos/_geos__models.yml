@@ -2,32 +2,185 @@ version: 2
 
 models:
   - name: stg_geos__imputaciones
+    description: >
+      Modelo incremental de las imputaciones realizadas por los usuarios
     config:      
       tags:
         - "daily"
 
   - name: stg_geos__tipo_departamento_tareas
+    description: >
+      Modelo SCD2 con los datos de los tipos de departamentos y tareas  
     config:      
       tags:
         - "hourly"
     columns:
-      - name: nk_tipo_departamento_tareas
+      - name: sk_tipo_departamento_tareas
+        description: >
+          Surrogate Key      
         tests:
           - unique
+          - not_null            
+    
+      - name: nk_tipo_departamento_tareas
+        description: >
+          Natural Key      
+        tests:
           - not_null        
         
+      - name: fecha_insercion
+        description: >
+          Fecha inserción         
+
+      - name: fecha_modificacion
+        description: >
+          Fecha modificación     
+
+      - name: fecha_eliminacion
+        description: >
+          Fecha eliminación
+
+      - name: fecha_desde
+        description: >
+          Fecha en la cual esta natural key pasó a ser el valor actual dentro de la dimensión
+
+      - name: fecha_hasta
+        description: >
+          Fecha en la cual esta natural key dejó de ser el valor actual dentro de la dimensión          
+
+      - name: actual
+        description: >
+          Indica si este registros es la natural key actual dentro de la dimensión  
 
   - name: stg_geos__proyecto_cbs
+    description: >
+      Modelo SCD2 con los datos de los tipos de proyectos cbs  
     config:      
       tags:
         - "hourly"
+    columns:
+      - name: sk_proyecto_cbs
+        description: >
+          Surrogate Key      
+        tests:
+          - unique
+          - not_null            
+    
+      - name: nk_proyecto_cbs
+        description: >
+          Natural Key      
+        tests:
+          - not_null       
+
+      - name: fecha_insercion
+        description: >
+          Fecha inserción         
+
+      - name: fecha_modificacion
+        description: >
+          Fecha modificación     
+
+      - name: fecha_eliminacion
+        description: >
+          Fecha eliminación
+
+      - name: fecha_desde
+        description: >
+          Fecha en la cual esta natural key pasó a ser el valor actual dentro de la dimensión
+
+      - name: fecha_hasta
+        description: >
+          Fecha en la cual esta natural key dejó de ser el valor actual dentro de la dimensión          
+
+      - name: actual
+        description: >
+          Indica si este registros es la natural key actual dentro de la dimensión
+
 
   - name: stg_geos__tipos_hora
+    description: >
+      Modelo SCD2 con los datos de los tipos de hora  
     config:      
       tags:
         - "hourly"
+    columns:
+      - name: sk_tipos_hora
+        description: >
+          Surrogate Key      
+        tests:
+          - unique
+          - not_null            
+    
+      - name: nk_tipos_hora
+        description: >
+          Natural Key      
+        tests:
+          - not_null        
+
+      - name: fecha_insercion
+        description: >
+          Fecha inserción         
+
+      - name: fecha_modificacion
+        description: >
+          Fecha modificación     
+
+      - name: fecha_eliminacion
+        description: >
+          Fecha eliminación
+
+      - name: fecha_desde
+        description: >
+          Fecha en la cual esta natural key pasó a ser el valor actual dentro de la dimensión
+
+      - name: fecha_hasta
+        description: >
+          Fecha en la cual esta natural key dejó de ser el valor actual dentro de la dimensión          
+
+      - name: actual
+        description: >
+          Indica si este registros es la natural key actual dentro de la dimensión            
 
   - name: stg_geos__proyecto
+    description: >
+      Modelo SCD2 con los datos de los tipos de proyecto  
     config:      
       tags:
-        - "hourly"        
+        - "hourly"  
+    columns:
+      - name: sk_proyecto
+        description: >
+          Surrogate Key      
+        tests:
+          - unique
+          - not_null            
+    
+      - name: nk_proyecto
+        description: >
+          Natural Key      
+        tests:
+          - not_null        
+
+      - name: fecha_insercion
+        description: >
+          Fecha inserción         
+
+      - name: fecha_modificacion
+        description: >
+          Fecha modificación     
+
+      - name: fecha_eliminacion
+        description: >
+          Fecha eliminación
+
+      - name: fecha_desde
+        description: >
+          Fecha en la cual esta natural key pasó a ser el valor actual dentro de la dimensión
+
+      - name: fecha_hasta
+        description: >
+          Fecha en la cual esta natural key dejó de ser el valor actual dentro de la dimensión          
+
+      - name: actual
+        description: >
+          Indica si este registros es la natural key actual dentro de la dimensión                   

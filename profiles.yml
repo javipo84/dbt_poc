@@ -2,25 +2,23 @@ dbt_poc:
   target: dev
   outputs:
     dev:
-      type: synapse
-      driver: 'ODBC Driver 17 for SQL Server'
-      server: "{{ env_var('SYNAPSE_SERVER') }}"
-      port: 1433
-      database: "{{ env_var('DABATASE_SYNAPSE') }}"
-      schema: "{{ env_var('SCHEMA_SYNAPSE') }}"
-      authentication: "{{ env_var('AUTHENTICATION_SYNAPSE') }}"
-      user: "{{ env_var('USER_SYNAPSE') }}"
-      password: "{{ env_var('PASSWORD_SYNAPSE') }}"
+      account: civicapartner.west-europe.azure
+      database: DBT_JPARRA
+      authenticator: externalbrowser      
+      role: AVANZADO
+      schema: dbt_curated
       threads: 4
+      type: snowflake
+      user: javier.parra@civica-soft.com
+      warehouse: WH_BASICO          
 
     pro:
-      type: synapse
-      driver: 'ODBC Driver 17 for SQL Server'
-      server: "{{ env_var('SYNAPSE_SERVER') }}"
-      port: 1433
-      database: "{{ env_var('DABATASE_SYNAPSE') }}"
-      schema: "{{ env_var('SCHEMA_SYNAPSE') }}"
-      authentication: "{{ env_var('AUTHENTICATION_SYNAPSE') }}"
-      user: "{{ env_var('USER_SYNAPSE') }}"
-      password: "{{ env_var('PASSWORD_SYNAPSE') }}"      
+      account: civicapartner.west-europe.azure
+      database: DBT_JPARRA
+      authenticator: externalbrowser      
+      role: AVANZADO
+      schema: dbt_curated
       threads: 4
+      type: snowflake
+      user: javier.parra@civica-soft.com
+      warehouse: WH_BASICO          

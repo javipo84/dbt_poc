@@ -30,7 +30,7 @@
         CodTipoCoste AS codigo_tipo_coste,
         CodigoPadre AS codigo_padre,
         Sufijo AS sufijo,
-        CAST(EsAgregador AS BIT) AS es_agregador,
+        CAST(EsAgregador AS INT) AS es_agregador,
         CodTipoCbs AS codigo_tipo_cbs,
         dbt_valid_from AS fecha_insercion,
         dbt_updated_at AS fecha_modificacion,
@@ -42,7 +42,3 @@
   )
 
   SELECT * FROM rename_casted_stg_proyecto_cbs
-
-  {%- call statement('db_util_log', fetch_result=True) -%}
-    {{ db_util_log('GEOS', 'curated', 'geos__proyecto_cbs', 'Actualización origen') }}
-  {%- endcall -%}

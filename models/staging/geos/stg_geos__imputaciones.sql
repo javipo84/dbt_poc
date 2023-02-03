@@ -46,7 +46,3 @@ SELECT * FROM rename_stg_geos_imputaciones
     WHERE created_at > (SELECT MAX(created_at) FROM {{ this }})
 
     {% endif %}
-
-  {%- call statement('db_util_log', fetch_result=True) -%}
-    {{ db_util_log('GEOS', 'curated', 'geos__imputaciones', 'Actualización origen') }}
-  {%- endcall -%}

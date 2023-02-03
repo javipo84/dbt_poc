@@ -22,3 +22,17 @@ dbt_poc:
       type: snowflake
       user: javier.parra@civica-soft.com
       warehouse: WH_BASICO          
+
+elementary:
+  target: dev
+  outputs:
+    dev:
+      account: civicapartner.west-europe.azure
+      database: DBT_JPARRA
+      authenticator: externalbrowser      
+      role: AVANZADO
+      schema: elementary
+      threads: 4
+      type: snowflake
+      user: javier.parra@civica-soft.com
+      warehouse: WH_BASICO   

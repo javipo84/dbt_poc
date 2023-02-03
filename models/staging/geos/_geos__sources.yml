@@ -34,9 +34,7 @@ sources:
             description: >
               Indica el estado del registro
             tests:
-              - not_null   
-              - dbt_expectations.expect_column_values_to_be_of_type:
-                  column_type: bit              
+              - not_null            
 
       - name: GEOS_ProyectoCBS   
         tags: ["hourly"]  

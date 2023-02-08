@@ -54,6 +54,31 @@ pip install sqlfluff-templater-dbt
 ```
 Podemos encontrar más información sobre este paquete [aquí](https://docs.sqlfluff.com/en/stable/index.html)
 
+### 5 - Visual Studio Code
+
+Recomendamos usar este IDE para trabajar con este proyecto. Podéis descargarlo desde [aquí](https://code.visualstudio.com/download)
+
+**Importante:** Una vez descargado el código, es necesario crear la carpeta _.\vscode_ en el raíz de vuestro proyecto, y dentro de la misma el fichero _settings.json_, para acontinuación asociar un template a los ficheros y crear las variables de entorno necesarias para la conexión.
+
+```
+  "files.associations":{  
+      "*.sql":"jinja-sql",
+      "**/target/**":""
+   },
+
+   "terminal.integrated.env.windows":{
+      "SYNAPSE_SERVER": "wkspace-synapsedev.sql.azuresynapse.net",
+      "PORT_SYNAPSE_SERVER": "1433",
+      "DABATASE_SYNAPSE": "XXXXXX", 
+      "SCHEMA_SYNAPSE": "XXXXXX",
+      "AUTHENTICATION_SYNAPSE": "ActiveDirectoryPassword",      
+      "USER_SYNAPSE": "XXXXXXX",
+      "PASSWORD_SYNAPSE": "XXXXXXXX",
+      "SCHEMA_SILVER": "XXXXXXX",
+      "SCHEMA_GOLD": "XXXXXXX"
+  },
+  "dbt.queryLimit": 500
+```
 
 ### Recursos:
 - Aprende más sobre dbt [en los documentos](https://docs.getdbt.com/docs/introduction)
